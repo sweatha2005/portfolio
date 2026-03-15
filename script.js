@@ -1,5 +1,6 @@
 /* ==============================================
    SCRIPT.JS — Portfolio Interactions & Logic
+   No preloader. Page loads instantly.
    ============================================== */
 
 (function () {
@@ -8,43 +9,34 @@
   /* ------------------------------------------
      DOM REFERENCES
   ------------------------------------------ */
-  const preloader = document.getElementById('preloader');
-  const scrollProgress = document.getElementById('scrollProgress');
-  const navbar = document.getElementById('navbar');
-  const navMenu = document.getElementById('navMenu');
-  const hamburger = document.getElementById('hamburger');
-  const themeToggle = document.getElementById('themeToggle');
-  const navLinks = document.querySelectorAll('.navbar__link');
-  const backToTopBtn = document.getElementById('backToTop');
-  const contactForm = document.getElementById('contactForm');
-  const toast = document.getElementById('toast');
-  const typewriterText = document.getElementById('typewriterText');
-  const heroParticles = document.getElementById('heroParticles');
-  const filterBtns = document.querySelectorAll('.projects__filter-btn');
-  const projectCards = document.querySelectorAll('.projects__card');
-  const statNumbers = document.querySelectorAll('.about__stat-number');
-
-  /* ------------------------------------------
-     PRELOADER
-  ------------------------------------------ */
-  window.addEventListener('load', function () {
-    setTimeout(function () {
-      preloader.classList.add('preloader--hidden');
-    }, 800);
-  });
+  var scrollProgress = document.getElementById('scrollProgress');
+  var navbar = document.getElementById('navbar');
+  var navMenu = document.getElementById('navMenu');
+  var hamburger = document.getElementById('hamburger');
+  var themeToggle = document.getElementById('themeToggle');
+  var navLinks = document.querySelectorAll('.navbar__link');
+  var backToTopBtn = document.getElementById('backToTop');
+  var contactForm = document.getElementById('contactForm');
+  var toast = document.getElementById('toast');
+  var typewriterText = document.getElementById('typewriterText');
+  var heroParticles = document.getElementById('heroParticles');
+  var filterBtns = document.querySelectorAll('.projects__filter-btn');
+  var projectCards = document.querySelectorAll('.projects__card');
+  var statNumbers = document.querySelectorAll('.about__stat-number');
+  var sections = document.querySelectorAll('.section');
 
   /* ------------------------------------------
      THEME TOGGLE (Dark / Light)
   ------------------------------------------ */
-  const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+  var savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
   if (savedTheme === 'light') {
     document.documentElement.setAttribute('data-theme', 'light');
     themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
   }
 
   themeToggle.addEventListener('click', function () {
-    const current = document.documentElement.getAttribute('data-theme');
-    if (current === 'light') {
+    var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    if (isLight) {
       document.documentElement.removeAttribute('data-theme');
       themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
       localStorage.setItem('portfolio-theme', 'dark');
@@ -58,26 +50,24 @@
   /* ------------------------------------------
      NAVBAR — Hide on Scroll Down, Show on Up
   ------------------------------------------ */
-  let lastScrollY = window.scrollY;
-  let ticking = false;
+  var lastScrollY = window.scrollY;
+  var navTicking = false;
 
   function handleNavbarScroll() {
-    const currentScrollY = window.scrollY;
-
+    var currentScrollY = window.scrollY;
     if (currentScrollY > lastScrollY && currentScrollY > 100) {
       navbar.classList.add('navbar--hidden');
     } else {
       navbar.classList.remove('navbar--hidden');
     }
-
     lastScrollY = currentScrollY;
-    ticking = false;
+    navTicking = false;
   }
 
   window.addEventListener('scroll', function () {
-    if (!ticking) {
+    if (!navTicking) {
       window.requestAnimationFrame(handleNavbarScroll);
-      ticking = true;
+      navTicking = true;
     }
   });
 
@@ -85,9 +75,9 @@
      SCROLL PROGRESS BAR
   ------------------------------------------ */
   function updateScrollProgress() {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const progress = (scrollTop / scrollHeight) * 100;
+    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
     scrollProgress.style.width = progress + '%';
   }
   window.addEventListener('scroll', updateScrollProgress);
@@ -95,16 +85,12 @@
   /* ------------------------------------------
      ACTIVE NAV LINK ON SCROLL
   ------------------------------------------ */
-  const sections = document.querySelectorAll('.section');
-
   function highlightActiveNav() {
-    const scrollY = window.scrollY + 150;
-
+    var scrollY = window.scrollY + 150;
     sections.forEach(function (section) {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      const sectionId = section.getAttribute('id');
-
+      var sectionTop = section.offsetTop;
+      var sectionHeight = section.offsetHeight;
+      var sectionId = section.getAttribute('id');
       if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
         navLinks.forEach(function (link) {
           link.classList.remove('navbar__link--active');
@@ -162,10 +148,10 @@
   ------------------------------------------ */
   var typewriterWords = [
     'Full Stack Developer',
+    'AI & Data Science Enthusiast',
     'React.js Developer',
     'Node.js Developer',
-    'UI/UX Enthusiast',
-    'Open Source Contributor'
+    'Problem Solver'
   ];
   var wordIndex = 0;
   var charIndex = 0;
@@ -186,12 +172,12 @@
     }
 
     if (!isDeleting && charIndex === currentWord.length) {
-      typeSpeed = 2000; // Pause at end
+      typeSpeed = 2000;
       isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       wordIndex = (wordIndex + 1) % typewriterWords.length;
-      typeSpeed = 400; // Pause before typing next word
+      typeSpeed = 400;
     }
 
     setTimeout(typewrite, typeSpeed);
@@ -202,16 +188,16 @@
      PARTICLE BACKGROUND (Hero)
   ------------------------------------------ */
   function createParticles() {
-    var particleCount = 60;
-    for (var i = 0; i < particleCount; i++) {
+    for (var i = 0; i < 60; i++) {
       var particle = document.createElement('div');
       particle.classList.add('hero__particle');
       particle.style.left = Math.random() * 100 + '%';
       particle.style.top = Math.random() * 100 + '%';
       particle.style.animationDuration = (Math.random() * 8 + 4) + 's';
       particle.style.animationDelay = (Math.random() * 5) + 's';
-      particle.style.width = (Math.random() * 3 + 1) + 'px';
-      particle.style.height = particle.style.width;
+      var size = (Math.random() * 3 + 1) + 'px';
+      particle.style.width = size;
+      particle.style.height = size;
       heroParticles.appendChild(particle);
     }
   }
@@ -221,7 +207,6 @@
      INTERSECTION OBSERVER — Reveal on Scroll
   ------------------------------------------ */
   function setupRevealAnimations() {
-    // Add reveal class to elements
     var revealTargets = [
       '.about__image-col',
       '.about__info-col',
@@ -229,6 +214,7 @@
       '.timeline__item',
       '.projects__card',
       '.skills__domain-card',
+      '.services__card',
       '.certifications__card',
       '.contact__info-card',
       '.contact__form'
@@ -241,7 +227,7 @@
       });
     });
 
-    // Add directional reveals for timeline items
+    // Directional reveals for timeline
     document.querySelectorAll('.timeline__item--left').forEach(function (el) {
       el.classList.remove('reveal');
       el.classList.add('reveal--left');
@@ -269,6 +255,35 @@
   setupRevealAnimations();
 
   /* ------------------------------------------
+     SKILL BARS — Animate Fill on Scroll
+  ------------------------------------------ */
+  function setupSkillBarAnimation() {
+    var skillBars = document.querySelectorAll('.skills__bar-fill');
+    if (skillBars.length === 0) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var bars = entry.target.querySelectorAll('.skills__bar-fill');
+          bars.forEach(function (bar, index) {
+            setTimeout(function () {
+              bar.style.width = bar.getAttribute('data-width') + '%';
+            }, index * 150);
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    // Observe the parent card that contains the bars
+    var barContainer = document.querySelector('.skills__bars');
+    if (barContainer) {
+      observer.observe(barContainer.closest('.skills__domain-card'));
+    }
+  }
+  setupSkillBarAnimation();
+
+  /* ------------------------------------------
      SKILL TAGS — Stagger Animation
   ------------------------------------------ */
   function setupSkillTagAnimation() {
@@ -291,7 +306,9 @@
     }, { threshold: 0.3 });
 
     document.querySelectorAll('.skills__domain-card').forEach(function (card) {
-      observer.observe(card);
+      if (card.querySelector('.skills__tags')) {
+        observer.observe(card);
+      }
     });
   }
   setupSkillTagAnimation();
@@ -307,15 +324,12 @@
     statNumbers.forEach(function (stat) {
       var target = parseInt(stat.getAttribute('data-target'), 10);
       var duration = 1500;
-      var start = 0;
       var startTime = null;
 
       function updateCount(timestamp) {
         if (!startTime) startTime = timestamp;
         var elapsed = timestamp - startTime;
         var progress = Math.min(elapsed / duration, 1);
-
-        // Ease out cubic
         var eased = 1 - Math.pow(1 - progress, 3);
         stat.textContent = Math.floor(eased * target);
 
@@ -332,16 +346,15 @@
     statsAnimated = true;
   }
 
-  var statsObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        animateStats();
-      }
-    });
-  }, { threshold: 0.5 });
-
   var aboutStats = document.querySelector('.about__stats');
   if (aboutStats) {
+    var statsObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateStats();
+        }
+      });
+    }, { threshold: 0.5 });
     statsObserver.observe(aboutStats);
   }
 
@@ -350,7 +363,6 @@
   ------------------------------------------ */
   filterBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      // Update active button
       filterBtns.forEach(function (b) {
         b.classList.remove('projects__filter-btn--active');
       });
@@ -392,21 +404,19 @@
     var subject = document.getElementById('contactSubject').value.trim();
     var message = document.getElementById('contactMessage').value.trim();
 
-    // Basic validation
     if (!name || !email || !subject || !message) {
       showToast('Please fill in all fields.', true);
       return;
     }
 
-    // Basic email validation
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
       showToast('Please enter a valid email address.', true);
       return;
     }
 
-    // Show success (in production, integrate EmailJS or backend)
-    showToast('Message sent! I\'ll get back to you soon.', false);
+    // Show success (integrate EmailJS or backend in production)
+    showToast("Message sent! I'll get back to you soon.", false);
     contactForm.reset();
   });
 
@@ -424,7 +434,6 @@
     }
 
     toast.classList.add('toast--visible');
-
     setTimeout(function () {
       toast.classList.remove('toast--visible');
     }, 3500);
@@ -437,7 +446,6 @@
     anchor.addEventListener('click', function (e) {
       var targetId = this.getAttribute('href');
       if (targetId === '#') return;
-
       var target = document.querySelector(targetId);
       if (target) {
         e.preventDefault();
