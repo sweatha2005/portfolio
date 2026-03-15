@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweatha S | Full Stack Developer</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portfolio of Sweatha S — Full Stack Developer specializing in React, Node.js & MongoDB." />
+  <meta name="keywords" content="Sweatha S, Full Stack Developer, React Developer, Node.js, Portfolio, Tamil Nadu" />
+  <meta name="author" content="Sweatha S" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sweatha S | Full Stack Developer" />
+  <meta property="og:description" content="Full Stack Developer Portfolio — React, Node.js, MongoDB" />
+  <meta property="og:url" content="https://sweathas.netlify.app" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#8B5CF6" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================
+       PRELOADER
+  ============================================ -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__logo">S.</div>
+  </div>
+
+  <!-- ============================================
+       SCROLL PROGRESS BAR
+  ============================================ -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ============================================
+       NAVBAR
+  ============================================ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar__container">
+      <!-- Logo -->
+      <a href="#hero" class="navbar__logo">S.</a>
+
+      <!-- Nav Links -->
+      <ul class="navbar__menu" id="navMenu">
+        <li><a href="#about" class="navbar__link">About</a></li>
+        <li><a href="#education" class="navbar__link">Education</a></li>
+        <li><a href="#experience" class="navbar__link">Experience</a></li>
+        <li><a href="#projects" class="navbar__link">Projects</a></li>
+        <li><a href="#skills" class="navbar__link">Skills</a></li>
+        <li><a href="#certifications" class="navbar__link">Certifications</a></li>
+        <li><a href="#contact" class="navbar__link">Contact</a></li>
+      </ul>
+
+      <!-- Right Side Actions -->
+      <div class="navbar__actions">
+        <!-- Dark/Light Mode Toggle -->
+        <button class="navbar__theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+          <i class="fas fa-moon"></i>
+        </button>
+
+        <!-- Hamburger Menu -->
+        <button class="navbar__hamburger" id="hamburger" aria-label="Toggle menu">
+          <span class="navbar__hamburger-line"></span>
+          <span class="navbar__hamburger-line"></span>
+          <span class="navbar__hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       SECTION 1: HERO
+  ============================================ -->
+  <section class="hero" id="hero">
+    <!-- Particle Background -->
+    <div class="hero__particles" id="heroParticles"></div>
+
+    <div class="hero__content">
+      <p class="hero__greeting">Hello, I'm</p>
+      <h1 class="hero__name">Sweatha S</h1>
+      <div class="hero__typewriter">
+        <span class="hero__typewriter-text" id="typewriterText"></span>
+        <span class="hero__typewriter-cursor">|</span>
+      </div>
+      <p class="hero__tagline">
+        I craft scalable web applications from pixel-perfect frontends to robust backends.
+      </p>
+
+      <!-- Available Badge -->
+      <div class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        Available for Opportunities
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="hero__cta">
+        <a href="#projects" class="btn btn--primary">
+          View My Work <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="./assets/resume.pdf" download class="btn btn--outline">
+          Download Resume <i class="fas fa-arrow-down"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll Down Indicator -->
+    <div class="hero__scroll-indicator">
+      <div class="hero__scroll-arrow">
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 2: ABOUT ME
+  ============================================ -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section__label">About Me</div>
+      <h2 class="section__title">Passionate Developer. Creative Thinker.</h2>
+
+      <div class="about__grid">
+        <!-- Left Column: Profile Image -->
+        <div class="about__image-col">
+          <div class="about__image-wrapper">
+            <div class="about__image-glow"></div>
+            <div class="about__image-placeholder">SS</div>
+          </div>
+          <div class="about__status-badge">
+            <i class="fas fa-briefcase"></i> Open to Work
+          </div>
+        </div>
+
+        <!-- Right Column: Info -->
+        <div class="about__info-col">
+          <p class="about__bio">
+            I'm Sweatha S, a Full Stack Developer from Tamil Nadu, India, passionate about building end-to-end web applications that solve real-world problems. I specialize in React.js on the frontend and Node.js + MongoDB on the backend, and I love turning complex requirements into clean, scalable code. When I'm not coding, I'm exploring new technologies, contributing to open source, or earning certifications to sharpen my skills.
+          </p>
+          <div class="about__details">
+            <div class="about__detail-row">
+              <i class="fas fa-graduation-cap"></i>
+              <span>B.E. Computer Science Engineering</span>
+            </div>
+            <div class="about__detail-row">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Tamil Nadu, India</span>
+            </div>
+            <div class="about__detail-row">
+              <i class="fas fa-briefcase"></i>
+              <span>Full Stack Developer</span>
+            </div>
+            <div class="about__detail-row">
+              <i class="fas fa-globe"></i>
+              <a href="https://sweathas.netlify.app" target="_blank" rel="noopener">sweathas.netlify.app</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="about__stats">
+        <div class="about__stat-card">
+          <span class="about__stat-number" data-target="10">0</span><span class="about__stat-plus">+</span>
+          <span class="about__stat-label">Projects</span>
+        </div>
+        <div class="about__stat-card">
+          <span class="about__stat-number" data-target="15">0</span><span class="about__stat-plus">+</span>
+          <span class="about__stat-label">Technologies</span>
+        </div>
+        <div class="about__stat-card">
+          <span class="about__stat-number" data-target="5">0</span><span class="about__stat-plus">+</span>
+          <span class="about__stat-label">Certifications</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 3: EDUCATION
+  ============================================ -->
+  <section class="education section" id="education">
+    <div class="container">
+      <div class="section__label">Education</div>
+      <h2 class="section__title">My Academic Journey</h2>
+
+      <div class="timeline">
+        <!-- Card 1: B.E. -->
+        <div class="timeline__item timeline__item--left" data-animate="slide-left">
+          <div class="timeline__dot"></div>
+          <div class="timeline__card">
+            <div class="timeline__icon"><i class="fas fa-graduation-cap"></i></div>
+            <h3 class="timeline__title">B.E. Computer Science Engineering</h3>
+            <p class="timeline__subtitle">
+              <i class="fas fa-school"></i> [REPLACE: College Name]
+            </p>
+            <p class="timeline__date">
+              <i class="fas fa-calendar-alt"></i> 2021 &ndash; 2025
+            </p>
+            <p class="timeline__detail">
+              <i class="fas fa-chart-bar"></i> CGPA: [REPLACE: X.X / 10]
+            </p>
+            <p class="timeline__coursework">
+              <strong>Relevant Coursework:</strong> Data Structures, DBMS, OS, Web Development, Computer Networks
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2: 12th Standard -->
+        <div class="timeline__item timeline__item--left" data-animate="slide-left">
+          <div class="timeline__dot"></div>
+          <div class="timeline__card">
+            <div class="timeline__icon"><i class="fas fa-book-open"></i></div>
+            <h3 class="timeline__title">12th Standard (Higher Secondary)</h3>
+            <p class="timeline__subtitle">
+              <i class="fas fa-school"></i> [REPLACE: School Name]
+            </p>
+            <p class="timeline__date">
+              <i class="fas fa-calendar-alt"></i> [REPLACE: Year]
+            </p>
+            <p class="timeline__detail">
+              <i class="fas fa-chart-bar"></i> Percentage: [REPLACE: XX%]
+            </p>
+            <p class="timeline__coursework">
+              <strong>Stream:</strong> Computer Science / Maths
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: 10th Standard -->
+        <div class="timeline__item timeline__item--left" data-animate="slide-left">
+          <div class="timeline__dot"></div>
+          <div class="timeline__card">
+            <div class="timeline__icon"><i class="fas fa-book"></i></div>
+            <h3 class="timeline__title">10th Standard (SSLC)</h3>
+            <p class="timeline__subtitle">
+              <i class="fas fa-school"></i> [REPLACE: School Name]
+            </p>
+            <p class="timeline__date">
+              <i class="fas fa-calendar-alt"></i> [REPLACE: Year]
+            </p>
+            <p class="timeline__detail">
+              <i class="fas fa-chart-bar"></i> Percentage: [REPLACE: XX%]
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 4: EXPERIENCE
+  ============================================ -->
+  <section class="experience section" id="experience">
+    <div class="container">
+      <div class="section__label">Experience</div>
+      <h2 class="section__title">Professional Journey</h2>
+
+      <div class="timeline timeline--right">
+        <!-- Entry 1 -->
+        <div class="timeline__item timeline__item--right" data-animate="slide-right">
+          <div class="timeline__dot"></div>
+          <div class="timeline__card">
+            <div class="timeline__icon"><i class="fas fa-briefcase"></i></div>
+            <h3 class="timeline__title">Full Stack Developer Intern</h3>
+            <p class="timeline__subtitle">
+              <i class="fas fa-building"></i> [REPLACE: Company Name]
+            </p>
+            <p class="timeline__date">
+              <i class="fas fa-calendar-alt"></i> [REPLACE: Month Year] &ndash; [REPLACE: Month Year]
+            </p>
+            <p class="timeline__location">
+              <i class="fas fa-map-marker-alt"></i> Remote / [REPLACE: City]
+            </p>
+            <ul class="timeline__list">
+              <li>Built and maintained RESTful APIs using Node.js and Express</li>
+              <li>Developed responsive React.js interfaces integrated with backend</li>
+              <li>Worked with MongoDB for database design and queries</li>
+            </ul>
+            <div class="timeline__tech-tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Express</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">Git</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Entry 2 -->
+        <div class="timeline__item timeline__item--right" data-animate="slide-right">
+          <div class="timeline__dot"></div>
+          <div class="timeline__card">
+            <div class="timeline__icon"><i class="fas fa-laptop-code"></i></div>
+            <h3 class="timeline__title">Frontend Developer Intern</h3>
+            <p class="timeline__subtitle">
+              <i class="fas fa-building"></i> [REPLACE: Company Name]
+            </p>
+            <p class="timeline__date">
+              <i class="fas fa-calendar-alt"></i> [REPLACE: Month Year] &ndash; [REPLACE: Month Year]
+            </p>
+            <p class="timeline__location">
+              <i class="fas fa-map-marker-alt"></i> [REPLACE: Location]
+            </p>
+            <ul class="timeline__list">
+              <li>Developed UI components using React and Tailwind CSS</li>
+              <li>Collaborated with backend team for API integration</li>
+              <li>Improved page load performance by optimizing assets</li>
+            </ul>
+            <div class="timeline__tech-tags">
+              <span class="tag">React</span>
+              <span class="tag">Tailwind CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">REST APIs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Download Resume -->
+      <div class="experience__resume">
+        <a href="./assets/resume.pdf" download class="btn btn--primary">
+          <i class="fas fa-download"></i> Download Full Resume
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 5: PROJECTS
+  ============================================ -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <div class="section__label">Projects</div>
+      <h2 class="section__title">What I've Built</h2>
+
+      <!-- Filter Tabs -->
+      <div class="projects__filters">
+        <button class="projects__filter-btn projects__filter-btn--active" data-filter="all">All</button>
+        <button class="projects__filter-btn" data-filter="frontend">Frontend</button>
+        <button class="projects__filter-btn" data-filter="backend">Backend</button>
+        <button class="projects__filter-btn" data-filter="fullstack">Full Stack</button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects__grid">
+        <!-- Card 1 -->
+        <div class="projects__card" data-category="fullstack">
+          <div class="projects__card-badge projects__card-badge--fullstack">Full Stack</div>
+          <h3 class="projects__card-title">E-Commerce Platform</h3>
+          <p class="projects__card-desc">A complete online shopping platform with product management, cart, and payment integration.</p>
+          <div class="projects__card-tags">
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Express</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">JWT</span>
+            <span class="tag">Stripe</span>
+          </div>
+          <div class="projects__card-links">
+            <a href="[REPLACE: GitHub URL]" target="_blank" rel="noopener" class="projects__card-link">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="[REPLACE: Live URL]" target="_blank" rel="noopener" class="projects__card-link projects__card-link--live">
+              <i class="fas fa-external-link-alt"></i> Live Demo
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="projects__card" data-category="frontend">
+          <div class="projects__card-badge projects__card-badge--frontend">Frontend</div>
+          <h3 class="projects__card-title">Task Management App</h3>
+          <p class="projects__card-desc">A drag-and-drop Kanban-style task manager with real-time updates and priority labeling.</p>
+          <div class="projects__card-tags">
+            <span class="tag">React</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">LocalStorage</span>
+          </div>
+          <div class="projects__card-links">
+            <a href="[REPLACE: GitHub URL]" target="_blank" rel="noopener" class="projects__card-link">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="[REPLACE: Live URL]" target="_blank" rel="noopener" class="projects__card-link projects__card-link--live">
+              <i class="fas fa-external-link-alt"></i> Live Demo
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="projects__card" data-category="backend">
+          <div class="projects__card-badge projects__card-badge--backend">Backend</div>
+          <h3 class="projects__card-title">RESTful Blog API</h3>
+          <p class="projects__card-desc">A full-featured blog backend with CRUD operations, user auth, and role-based access control.</p>
+          <div class="projects__card-tags">
+            <span class="tag">Node.js</span>
+            <span class="tag">Express</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">JWT</span>
+            <span class="tag">Bcrypt</span>
+          </div>
+          <div class="projects__card-links">
+            <a href="[REPLACE: GitHub URL]" target="_blank" rel="noopener" class="projects__card-link">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="[REPLACE: Live URL]" target="_blank" rel="noopener" class="projects__card-link projects__card-link--live">
+              <i class="fas fa-external-link-alt"></i> Live Demo
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="projects__card" data-category="frontend">
+          <div class="projects__card-badge projects__card-badge--frontend">Frontend</div>
+          <h3 class="projects__card-title">Portfolio Website</h3>
+          <p class="projects__card-desc">A personal developer portfolio with smooth animations, dark mode, and contact form.</p>
+          <div class="projects__card-tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">EmailJS</span>
+          </div>
+          <div class="projects__card-links">
+            <a href="https://github.com/sweatha2005" target="_blank" rel="noopener" class="projects__card-link">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://sweathas.netlify.app" target="_blank" rel="noopener" class="projects__card-link projects__card-link--live">
+              <i class="fas fa-external-link-alt"></i> Live Demo
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- View All Projects -->
+      <div class="projects__view-all">
+        <a href="https://github.com/sweatha2005" target="_blank" rel="noopener" class="btn btn--primary">
+          View All Projects on GitHub <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 6: SKILLS & DOMAINS
+  ============================================ -->
+  <section class="skills section" id="skills">
+    <div class="container">
+      <div class="section__label">Skills &amp; Domains</div>
+      <h2 class="section__title">Technologies I Work With</h2>
+
+      <div class="skills__domains">
+        <!-- Domain 1: Frontend -->
+        <div class="skills__domain-card" data-animate="fade-up">
+          <div class="skills__domain-icon"><i class="fas fa-desktop"></i></div>
+          <h3 class="skills__domain-title">Frontend Development</h3>
+          <div class="skills__tags">
+            <span class="skills__tag">HTML5</span>
+            <span class="skills__tag">CSS3</span>
+            <span class="skills__tag">JavaScript (ES6+)</span>
+            <span class="skills__tag">React.js</span>
+            <span class="skills__tag">Tailwind CSS</span>
+            <span class="skills__tag">Bootstrap</span>
+            <span class="skills__tag">Responsive Design</span>
+            <span class="skills__tag">Redux</span>
+            <span class="skills__tag">Figma (basics)</span>
+          </div>
+        </div>
+
+        <!-- Domain 2: Backend -->
+        <div class="skills__domain-card" data-animate="fade-up">
+          <div class="skills__domain-icon"><i class="fas fa-cogs"></i></div>
+          <h3 class="skills__domain-title">Backend Development</h3>
+          <div class="skills__tags">
+            <span class="skills__tag">Node.js</span>
+            <span class="skills__tag">Express.js</span>
+            <span class="skills__tag">REST APIs</span>
+            <span class="skills__tag">MongoDB</span>
+            <span class="skills__tag">MySQL</span>
+            <span class="skills__tag">JWT Authentication</span>
+            <span class="skills__tag">MVC Architecture</span>
+            <span class="skills__tag">bcrypt</span>
+            <span class="skills__tag">Mongoose</span>
+          </div>
+        </div>
+
+        <!-- Domain 3: Tools & DevOps -->
+        <div class="skills__domain-card" data-animate="fade-up">
+          <div class="skills__domain-icon"><i class="fas fa-tools"></i></div>
+          <h3 class="skills__domain-title">Tools &amp; DevOps</h3>
+          <div class="skills__tags">
+            <span class="skills__tag">Git</span>
+            <span class="skills__tag">GitHub</span>
+            <span class="skills__tag">VS Code</span>
+            <span class="skills__tag">Postman</span>
+            <span class="skills__tag">Netlify</span>
+            <span class="skills__tag">Vercel</span>
+            <span class="skills__tag">Linux (basics)</span>
+            <span class="skills__tag">Docker (basics)</span>
+            <span class="skills__tag">npm</span>
+            <span class="skills__tag">Agile / Scrum</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Marquee -->
+      <div class="skills__marquee">
+        <div class="skills__marquee-track">
+          <span class="skills__marquee-item"><i class="fab fa-html5"></i> HTML5</span>
+          <span class="skills__marquee-item"><i class="fab fa-css3-alt"></i> CSS3</span>
+          <span class="skills__marquee-item"><i class="fab fa-js-square"></i> JavaScript</span>
+          <span class="skills__marquee-item"><i class="fab fa-react"></i> React</span>
+          <span class="skills__marquee-item"><i class="fab fa-node-js"></i> Node.js</span>
+          <span class="skills__marquee-item"><i class="fas fa-database"></i> MongoDB</span>
+          <span class="skills__marquee-item"><i class="fab fa-git-alt"></i> Git</span>
+          <span class="skills__marquee-item"><i class="fab fa-github"></i> GitHub</span>
+          <span class="skills__marquee-item"><i class="fab fa-npm"></i> npm</span>
+          <span class="skills__marquee-item"><i class="fab fa-docker"></i> Docker</span>
+          <span class="skills__marquee-item"><i class="fab fa-linux"></i> Linux</span>
+          <span class="skills__marquee-item"><i class="fab fa-figma"></i> Figma</span>
+          <!-- Duplicate for seamless loop -->
+          <span class="skills__marquee-item"><i class="fab fa-html5"></i> HTML5</span>
+          <span class="skills__marquee-item"><i class="fab fa-css3-alt"></i> CSS3</span>
+          <span class="skills__marquee-item"><i class="fab fa-js-square"></i> JavaScript</span>
+          <span class="skills__marquee-item"><i class="fab fa-react"></i> React</span>
+          <span class="skills__marquee-item"><i class="fab fa-node-js"></i> Node.js</span>
+          <span class="skills__marquee-item"><i class="fas fa-database"></i> MongoDB</span>
+          <span class="skills__marquee-item"><i class="fab fa-git-alt"></i> Git</span>
+          <span class="skills__marquee-item"><i class="fab fa-github"></i> GitHub</span>
+          <span class="skills__marquee-item"><i class="fab fa-npm"></i> npm</span>
+          <span class="skills__marquee-item"><i class="fab fa-docker"></i> Docker</span>
+          <span class="skills__marquee-item"><i class="fab fa-linux"></i> Linux</span>
+          <span class="skills__marquee-item"><i class="fab fa-figma"></i> Figma</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 7: CERTIFICATIONS
+  ============================================ -->
+  <section class="certifications section" id="certifications">
+    <div class="container">
+      <div class="section__label">Certifications</div>
+      <h2 class="section__title">Credentials &amp; Achievements</h2>
+
+      <div class="certifications__grid">
+        <!-- Cert 1 -->
+        <div class="certifications__card">
+          <div class="certifications__card-inner">
+            <div class="certifications__card-front">
+              <div class="certifications__card-icon"><i class="fas fa-trophy"></i></div>
+              <h3 class="certifications__card-title">The Complete Full Stack Web Development Bootcamp</h3>
+              <div class="certifications__card-org">
+                <span class="certifications__org-badge certifications__org-badge--udemy">Udemy</span>
+              </div>
+              <p class="certifications__card-date"><i class="fas fa-calendar-alt"></i> 2024</p>
+            </div>
+            <div class="certifications__card-back">
+              <i class="fas fa-certificate"></i>
+              <p>Full Stack Web Development Bootcamp</p>
+              <a href="[REPLACE: Certificate Link]" target="_blank" rel="noopener" class="btn btn--small">
+                View Certificate <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert 2 -->
+        <div class="certifications__card">
+          <div class="certifications__card-inner">
+            <div class="certifications__card-front">
+              <div class="certifications__card-icon"><i class="fas fa-trophy"></i></div>
+              <h3 class="certifications__card-title">React &mdash; The Complete Guide</h3>
+              <div class="certifications__card-org">
+                <span class="certifications__org-badge certifications__org-badge--coursera">Coursera</span>
+              </div>
+              <p class="certifications__card-date"><i class="fas fa-calendar-alt"></i> 2024</p>
+            </div>
+            <div class="certifications__card-back">
+              <i class="fas fa-certificate"></i>
+              <p>React &mdash; The Complete Guide</p>
+              <a href="[REPLACE: Certificate Link]" target="_blank" rel="noopener" class="btn btn--small">
+                View Certificate <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert 3 -->
+        <div class="certifications__card">
+          <div class="certifications__card-inner">
+            <div class="certifications__card-front">
+              <div class="certifications__card-icon"><i class="fas fa-trophy"></i></div>
+              <h3 class="certifications__card-title">Node.js, Express &amp; MongoDB Bootcamp</h3>
+              <div class="certifications__card-org">
+                <span class="certifications__org-badge certifications__org-badge--udemy">Udemy</span>
+              </div>
+              <p class="certifications__card-date"><i class="fas fa-calendar-alt"></i> 2023</p>
+            </div>
+            <div class="certifications__card-back">
+              <i class="fas fa-certificate"></i>
+              <p>Node.js, Express &amp; MongoDB Bootcamp</p>
+              <a href="[REPLACE: Certificate Link]" target="_blank" rel="noopener" class="btn btn--small">
+                View Certificate <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert 4 -->
+        <div class="certifications__card">
+          <div class="certifications__card-inner">
+            <div class="certifications__card-front">
+              <div class="certifications__card-icon"><i class="fas fa-trophy"></i></div>
+              <h3 class="certifications__card-title">Cloud Computing</h3>
+              <div class="certifications__card-org">
+                <span class="certifications__org-badge certifications__org-badge--nptel">NPTEL</span>
+              </div>
+              <p class="certifications__card-date"><i class="fas fa-calendar-alt"></i> 2023</p>
+            </div>
+            <div class="certifications__card-back">
+              <i class="fas fa-certificate"></i>
+              <p>Cloud Computing</p>
+              <a href="[REPLACE: Certificate Link]" target="_blank" rel="noopener" class="btn btn--small">
+                View Certificate <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 8: CONTACT
+  ============================================ -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section__label">Contact</div>
+      <h2 class="section__title">Let's Connect</h2>
+      <p class="contact__subtitle">
+        Open to internships, full-time roles, freelance projects &amp; collaborations &mdash; let's build something great together!
+      </p>
+
+      <div class="contact__grid">
+        <!-- Left: Contact Info -->
+        <div class="contact__info">
+          <div class="contact__info-card">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:sweatha10200516@gmail.com">sweatha10200516@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact__info-card">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:+919042810454">+91 9042810454</a>
+            </div>
+          </div>
+          <div class="contact__info-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Location</h4>
+              <span>Tamil Nadu, India</span>
+            </div>
+          </div>
+          <div class="contact__info-card">
+            <i class="fas fa-globe"></i>
+            <div>
+              <h4>Website</h4>
+              <a href="https://sweathas.netlify.app" target="_blank" rel="noopener">sweathas.netlify.app</a>
+            </div>
+          </div>
+
+          <!-- Social Icons -->
+          <div class="contact__socials">
+            <a href="https://github.com/sweatha2005" target="_blank" rel="noopener" aria-label="GitHub" class="contact__social-link">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/sweatha--s/" target="_blank" rel="noopener" aria-label="LinkedIn" class="contact__social-link">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="[REPLACE: Twitter/X URL]" target="_blank" rel="noopener" aria-label="Twitter" class="contact__social-link">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="[REPLACE: LeetCode URL]" target="_blank" rel="noopener" aria-label="LeetCode" class="contact__social-link">
+              <i class="fas fa-code"></i>
+            </a>
+            <a href="[REPLACE: HackerRank URL]" target="_blank" rel="noopener" aria-label="HackerRank" class="contact__social-link">
+              <i class="fab fa-hackerrank"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <form class="contact__form" id="contactForm">
+          <div class="contact__form-group">
+            <label for="contactName">Full Name</label>
+            <input type="text" id="contactName" name="name" placeholder="John Doe" required />
+          </div>
+          <div class="contact__form-group">
+            <label for="contactEmail">Email Address</label>
+            <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required />
+          </div>
+          <div class="contact__form-group">
+            <label for="contactSubject">Subject</label>
+            <input type="text" id="contactSubject" name="subject" placeholder="Project Inquiry" required />
+          </div>
+          <div class="contact__form-group">
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">
+            Send Message <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+      <i class="fas fa-check-circle"></i>
+      <span>Message sent! I'll get back to you soon.</span>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+  ============================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="#hero" class="footer__logo">S.</a>
+          <span class="footer__name">Sweatha S</span>
+        </div>
+        <nav class="footer__nav">
+          <a href="#about">About</a>
+          <a href="#education">Education</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#certifications">Certifications</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="footer__socials">
+          <a href="https://github.com/sweatha2005" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/sweatha--s/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="mailto:sweatha10200516@gmail.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+      <div class="footer__divider"></div>
+      <div class="footer__bottom">
+        <p>&copy; 2025 Sweatha S. All rights reserved.</p>
+        <p>Designed &amp; Built with <span class="footer__heart">&hearts;</span> by Sweatha S</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>

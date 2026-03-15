@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Page Not Found | Sweatha S</title>
+  <meta name="theme-color" content="#8B5CF6" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0A0A0F;
+      color: #E2E8F0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Floating particles */
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #8B5CF6;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float-around linear infinite;
+    }
+    @keyframes float-around {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.3; }
+      90% { opacity: 0.3; }
+      100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+    }
+
+    .error-page {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+    }
+
+    .error-page__code {
+      font-size: clamp(6rem, 20vw, 12rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, #8B5CF6, #A78BFA);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      position: relative;
+      animation: glitch 3s ease-in-out infinite;
+    }
+    @keyframes glitch {
+      0%, 100% { text-shadow: none; }
+      20% { text-shadow: -3px 0 #8B5CF6, 3px 0 #A78BFA; }
+      40% { text-shadow: 3px 0 #8B5CF6, -3px 0 #A78BFA; }
+      60% { text-shadow: -2px 0 #A78BFA, 2px 0 #8B5CF6; }
+      80% { text-shadow: none; }
+    }
+
+    .error-page__title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 1rem 0 0.75rem;
+      color: #E2E8F0;
+    }
+
+    .error-page__message {
+      font-size: 1.05rem;
+      color: #94A3B8;
+      max-width: 450px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .error-page__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 2rem;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      border: 2px solid #8B5CF6;
+      background: #8B5CF6;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .error-page__btn:hover {
+      background: #A78BFA;
+      border-color: #A78BFA;
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .error-page__logo {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #8B5CF6;
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="error-page">
+    <a href="/" class="error-page__logo">S.</a>
+    <div class="error-page__code">404</div>
+    <h1 class="error-page__title">Page Not Found</h1>
+    <p class="error-page__message">
+      Oops! The page you're looking for doesn't exist or has been moved.
+      Let's get you back on track.
+    </p>
+    <a href="/" class="error-page__btn">
+      <i class="fas fa-home"></i> Go Home
+    </a>
+  </div>
+
+  <script>
+    // Create floating particles
+    (function () {
+      var body = document.body;
+      for (var i = 0; i < 30; i++) {
+        var particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDuration = (Math.random() * 8 + 5) + 's';
+        particle.style.animationDelay = (Math.random() * 5) + 's';
+        particle.style.width = (Math.random() * 4 + 2) + 'px';
+        particle.style.height = particle.style.width;
+        body.appendChild(particle);
+      }
+    })();
+  </script>
+</body>
+</html>
