@@ -394,30 +394,21 @@
   });
 
   /* ------------------------------------------
-     CONTACT FORM — Validation & Submit
+     CONTACT FORM — Validation & Submit (Formspree)
   ------------------------------------------ */
   contactForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-
     var name = document.getElementById('contactName').value.trim();
-    var email = document.getElementById('contactEmail').value.trim();
     var subject = document.getElementById('contactSubject').value.trim();
     var message = document.getElementById('contactMessage').value.trim();
 
-    if (!name || !email || !subject || !message) {
+    if (!name || !subject || !message) {
+      e.preventDefault();
       showToast('Please fill in all fields.', true);
       return;
     }
 
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-      showToast('Please enter a valid email address.', true);
-      return;
-    }
-
-    // Show success (integrate EmailJS or backend in production)
-    showToast("Message sent! I'll get back to you soon.", false);
-    contactForm.reset();
+    // Formspree will handle submission
+    showToast('Message sent successfully', false);
   });
 
   function showToast(message, isError) {
