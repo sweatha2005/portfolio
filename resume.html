@@ -15,19 +15,27 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       background: var(--bg);
       color: var(--text);
-      min-height: 100vh;
-      padding: 1rem;
+      display: flex;
+      flex-direction: column;
     }
 
     .resume-page {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      gap: 1rem;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
     }
 
     .resume-toolbar {
@@ -36,13 +44,13 @@
       align-items: center;
       gap: 1rem;
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border);
+      padding: 1rem;
+      flex-shrink: 0;
     }
 
     .resume-title {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--text);
     }
@@ -54,39 +62,96 @@
       text-decoration: none;
       background: var(--accent);
       color: #fff;
-      border-radius: 10px;
-      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
       font-weight: 600;
       white-space: nowrap;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .resume-download:hover {
+      opacity: 0.9;
     }
 
     .resume-viewer {
+      flex: 1;
       width: 100%;
-      height: calc(100vh - 120px);
       background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      border: none;
       overflow: hidden;
+      display: block;
+      position: relative;
     }
 
-    .resume-viewer iframe {
+    .resume-viewer embed {
       width: 100%;
       height: 100%;
-      border: 0;
+      border: none;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
-    @media (max-width: 640px) {
+    .resume-fallback {
+      padding: 2rem;
+      text-align: center;
+      color: #333;
+      font-size: 1rem;
+    }
+
+    .resume-fallback a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .resume-fallback a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .resume-toolbar {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding: 0.75rem;
+      }
+
+      .resume-title {
+        font-size: 1rem;
+        flex: 0 0 100%;
+      }
+
+      .resume-download {
+        flex: 1;
+        min-width: 120px;
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 480px) {
       .resume-toolbar {
         flex-direction: column;
         align-items: stretch;
+        gap: 0.5rem;
+        padding: 0.5rem;
+      }
+
+      .resume-title {
+        font-size: 0.95rem;
       }
 
       .resume-download {
         width: 100%;
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
       }
 
-      .resume-viewer {
-        height: calc(100vh - 180px);
+      .resume-fallback {
+        padding: 1rem;
       }
     }
   </style>
@@ -94,14 +159,14 @@
 <body>
   <main class="resume-page">
     <header class="resume-toolbar">
-      <h1 class="resume-title">Resume</h1>
-      <a class="resume-download" href="./sweatha%20update%20resume.pdf" download>
-        Download Resume
+      <h1 class="resume-title">Sweatha CV</h1>
+      <a class="resume-download" href="./Sweatha%20CV.pdf" download>
+        ⬇ Download Resume
       </a>
     </header>
 
-    <section class="resume-viewer" aria-label="Resume viewer">
-      <iframe src="./sweatha%20update%20resume.pdf" title="Resume PDF"></iframe>
+    <section class="resume-viewer">
+      <embed src="./Sweatha%20CV.pdf#toolbar=1&navpanes=0&scrollbar=1" type="application/pdf" />
     </section>
   </main>
 </body>
