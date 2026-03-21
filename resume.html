@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume | Sweatha S</title>
+  <style>
+    :root {
+      --bg: #0A0A0F;
+      --surface: #111128;
+      --border: rgba(139, 92, 246, 0.2);
+      --accent: #8B5CF6;
+      --text: #E2E8F0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 1rem;
+    }
+
+    .resume-page {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .resume-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+    }
+
+    .resume-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .resume-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 10px;
+      padding: 0.6rem 1rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .resume-viewer {
+      width: 100%;
+      height: calc(100vh - 120px);
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .resume-viewer iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    @media (max-width: 640px) {
+      .resume-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .resume-download {
+        width: 100%;
+      }
+
+      .resume-viewer {
+        height: calc(100vh - 180px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="resume-page">
+    <header class="resume-toolbar">
+      <h1 class="resume-title">Resume</h1>
+      <a class="resume-download" href="./sweatha%20update%20resume.pdf" download>
+        Download Resume
+      </a>
+    </header>
+
+    <section class="resume-viewer" aria-label="Resume viewer">
+      <iframe src="./sweatha%20update%20resume.pdf" title="Resume PDF"></iframe>
+    </section>
+  </main>
+</body>
+</html>

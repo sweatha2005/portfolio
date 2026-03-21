@@ -91,8 +91,8 @@
         <a href="#projects" class="btn btn--primary">
           View My Work <i class="fas fa-arrow-right"></i>
         </a>
-        <a href="./assets/resume.pdf" download class="btn btn--outline">
-          Download Resume <i class="fas fa-arrow-down"></i>
+        <a href="./resume.html" class="btn btn--outline">
+          View Resume <i class="fas fa-arrow-down"></i>
         </a>
       </div>
     </div>
@@ -252,8 +252,8 @@
       </div>
 
       <div class="experience__resume">
-        <a href="./assets/resume.pdf" download class="btn btn--primary">
-          <i class="fas fa-download"></i> Download Full Resume
+        <a href="./resume.html" class="btn btn--primary">
+          <i class="fas fa-download"></i> View &amp; Download Resume
         </a>
       </div>
     </div>
@@ -518,60 +518,6 @@
   </section>
 
   <!-- ============================================
-       SECTION 7: SERVICES
-  ============================================ -->
-  <section class="services section" id="services">
-    <div class="container">
-      <div class="section__label">Services</div>
-      <h2 class="section__title">What I Offer</h2>
-
-      <div class="services__grid">
-        <!-- Card 1: Web Creation -->
-        <div class="services__card">
-          <div class="services__icon"><i class="fas fa-globe"></i></div>
-          <h3 class="services__title">Web Creation</h3>
-          <p class="services__desc">Building responsive, modern websites and web applications with cutting-edge technologies.</p>
-          <ul class="services__list">
-            <li><i class="fas fa-check"></i> Responsive Design</li>
-            <li><i class="fas fa-check"></i> Modern UI/UX</li>
-            <li><i class="fas fa-check"></i> Performance Optimization</li>
-            <li><i class="fas fa-check"></i> SEO-Friendly</li>
-            <li><i class="fas fa-check"></i> Cross-browser Compatibility</li>
-          </ul>
-        </div>
-
-        <!-- Card 2: Data Analysis -->
-        <div class="services__card">
-          <div class="services__icon"><i class="fas fa-chart-bar"></i></div>
-          <h3 class="services__title">Data Analysis</h3>
-          <p class="services__desc">Extracting insights from data through comprehensive analysis and visualization.</p>
-          <ul class="services__list">
-            <li><i class="fas fa-check"></i> Data Visualization</li>
-            <li><i class="fas fa-check"></i> Statistical Analysis</li>
-            <li><i class="fas fa-check"></i> Report Generation</li>
-            <li><i class="fas fa-check"></i> Dashboard Creation</li>
-            <li><i class="fas fa-check"></i> Predictive Analytics</li>
-          </ul>
-        </div>
-
-        <!-- Card 3: AI Model Creation -->
-        <div class="services__card">
-          <div class="services__icon"><i class="fas fa-robot"></i></div>
-          <h3 class="services__title">AI Model Creation</h3>
-          <p class="services__desc">Developing intelligent models and machine learning solutions for various business needs.</p>
-          <ul class="services__list">
-            <li><i class="fas fa-check"></i> Machine Learning Models</li>
-            <li><i class="fas fa-check"></i> Natural Language Processing</li>
-            <li><i class="fas fa-check"></i> Computer Vision</li>
-            <li><i class="fas fa-check"></i> Model Deployment</li>
-            <li><i class="fas fa-check"></i> AI Integration</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
        SECTION 8: CERTIFICATIONS
   ============================================ -->
   <section class="certifications section" id="certifications">
@@ -584,8 +530,8 @@
         <div class="certifications__card">
           <div class="certifications__card-icon"><i class="fas fa-trophy"></i></div>
           <h3 class="certifications__card-title">MongoDB</h3>
-          <a href="#" class="certifications__view-btn">
-            View Details <i class="fas fa-external-link-alt"></i>
+          <a href="./certificate/" class="certifications__view-btn" target="_blank" rel="noopener">
+            View Certificate <i class="fas fa-external-link-alt"></i>
           </a>
         </div>
 
@@ -593,8 +539,8 @@
         <div class="certifications__card">
           <div class="certifications__card-icon"><i class="fas fa-trophy"></i></div>
           <h3 class="certifications__card-title">Introduction to MySQL</h3>
-          <a href="#" class="certifications__view-btn">
-            View Details <i class="fas fa-external-link-alt"></i>
+          <a href="./certificate/" class="certifications__view-btn" target="_blank" rel="noopener">
+            View Certificate <i class="fas fa-external-link-alt"></i>
           </a>
         </div>
 
@@ -602,8 +548,8 @@
         <div class="certifications__card">
           <div class="certifications__card-icon"><i class="fas fa-trophy"></i></div>
           <h3 class="certifications__card-title">Master Python &amp; Generative AI for Advanced Analytics</h3>
-          <a href="#" class="certifications__view-btn">
-            View Details <i class="fas fa-external-link-alt"></i>
+          <a href="./certificate/" class="certifications__view-btn" target="_blank" rel="noopener">
+            View Certificate <i class="fas fa-external-link-alt"></i>
           </a>
         </div>
 
@@ -612,8 +558,8 @@
           <div class="certifications__card-icon"><i class="fas fa-trophy"></i></div>
           <h3 class="certifications__card-title">IBM (Naan Mudhalvan) &ndash; AdroIT Technologies</h3>
           <p class="certifications__card-subtitle">Intern &ndash; Virtual</p>
-          <a href="#" class="certifications__view-btn">
-            View Details <i class="fas fa-external-link-alt"></i>
+          <a href="./certificate/" class="certifications__view-btn" target="_blank" rel="noopener">
+            View Certificate <i class="fas fa-external-link-alt"></i>
           </a>
         </div>
       </div>
@@ -757,6 +703,17 @@
   <button class="back-to-top" id="backToTop" aria-label="Back to top">
     <i class="fas fa-arrow-up"></i>
   </button>
+
+  <!-- Media Modal -->
+  <div class="media-modal" id="mediaModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Certificate preview">
+    <div class="media-modal__backdrop" data-close-modal></div>
+    <div class="media-modal__panel" role="document">
+      <button type="button" class="media-modal__close" id="mediaModalClose" aria-label="Close modal">
+        <i class="fas fa-xmark"></i>
+      </button>
+      <div class="media-modal__body" id="mediaModalBody"></div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

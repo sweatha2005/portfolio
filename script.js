@@ -24,6 +24,9 @@
   var projectCards = document.querySelectorAll('.projects__card');
   var statNumbers = document.querySelectorAll('.about__stat-number');
   var sections = document.querySelectorAll('.section');
+  var mediaModal = document.getElementById('mediaModal');
+  var mediaModalBody = document.getElementById('mediaModalBody');
+  var mediaModalClose = document.getElementById('mediaModalClose');
 
   /* ------------------------------------------
      THEME TOGGLE (Dark / Light)
@@ -214,7 +217,6 @@
       '.timeline__item',
       '.projects__card',
       '.skills__domain-card',
-      '.services__card',
       '.certifications__card',
       '.contact__info-card',
       '.contact__form'
@@ -252,7 +254,260 @@
       observer.observe(el);
     });
   }
-  setupRevealAnimations();
+  function normalizeCertificateName(value) {
+    return (value || '')
+      .toLowerCase()
+      .replace(/\.[^.]+$/, '')
+      .replace(/&/g, ' and ')
+      .replace(/\bcertification\b/g, ' ')
+      .replace(/[^a-z0-9]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function toReadableTitle(fileName) {
+    var cleaned = (fileName || '')
+      .replace(/\.[^.]+$/, '')
+      .replace(/[_-]+/g, ' ')
+      .replace(/\b(cert|certificate)\b/gi, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    return cleaned
+      .split(' ')
+      .map(function (word) {
+        var lower = word.toLowerCase();
+        if (lower === 'mongodb') return 'MongoDB';
+        if (lower === 'mysql') return 'MySQL';
+        if (lower === 'ibm') return 'IBM';
+        if (lower === 'ai') return 'AI';
+        if (!word) return word;
+        return lower.charAt(0).toUpperCase() + lower.slice(1);
+      })
+      .join(' ');
+  }
+
+  function setCertificateButton(button, fileName, title) {
+    if (!button) return;
+    var filePath = './certificate/' + encodeURIComponent(fileName);
+    button.innerHTML = 'View Certificate <i class="fas fa-external-link-alt"></i>';
+    button.setAttribute('href', filePath);
+    button.setAttribute('data-cert-src', filePath);
+    button.setAttribute('data-cert-title', title || 'Certificate');
+    button.classList.remove('certifications__view-btn--disabled');
+    button.removeAttribute('aria-disabled');
+    button.removeAttribute('tabindex');
+  }
+
+  function disableCertificateButton(button) {
+    if (!button) return;
+    button.innerHTML = 'View Certificate <i class="fas fa-external-link-alt"></i>';
+    button.removeAttribute('data-cert-src');
+    button.removeAttribute('data-cert-title');
+    button.removeAttribute('href');
+    button.classList.add('certifications__view-btn--disabled');
+    button.setAttribute('aria-disabled', 'true');
+    button.setAttribute('tabindex', '-1');
+  }
+
+  function createCertificateCard(title, fileName) {
+    var card = document.createElement('div');
+    card.className = 'certifications__card';
+    card.innerHTML = [
+      '<div class="certifications__card-icon"><i class="fas fa-trophy"></i></div>',
+      '<h3 class="certifications__card-title"></h3>',
+      '<a class="certifications__view-btn" target="_blank" rel="noopener">',
+      'View Certificate <i class="fas fa-external-link-alt"></i>',
+      '</a>'
+    ].join('');
+
+    var cardTitle = card.querySelector('.certifications__card-title');
+    cardTitle.textContent = title;
+    setCertificateButton(card.querySelector('.certifications__view-btn'), fileName, title);
+    return card;
+  }
+
+  function dedupeImageFiles(files) {
+    var seen = {};
+    return files.filter(function (file) {
+      var key = file.toLowerCase();
+      if (seen[key]) return false;
+      seen[key] = true;
+      return true;
+    });
+  }
+
+  function extractImageFileNamesFromHtml(htmlText) {
+    var files = [];
+    var doc = new DOMParser().parseFromString(htmlText, 'text/html');
+
+    doc.querySelectorAll('a[href]').forEach(function (link) {
+      var href = decodeURIComponent(link.getAttribute('href') || '');
+      var fileName = href.split('/').pop() || '';
+      if (/\.(png|jpe?g|webp)$/i.test(fileName)) {
+        files.push(fileName);
+      }
+    });
+
+    if (files.length === 0) {
+      var matches = htmlText.match(/[^"'\s<>]+\.(?:png|jpe?g|webp)/gi) || [];
+      matches.forEach(function (match) {
+        files.push(decodeURIComponent(match.split('/').pop()));
+      });
+    }
+
+    return dedupeImageFiles(files);
+  }
+
+  async function getCertificateImageFiles() {
+    var files = [];
+    var pathsToTry = ['./certificate/', './certificate'];
+
+    for (var i = 0; i < pathsToTry.length; i++) {
+      try {
+        var response = await fetch(pathsToTry[i]);
+        if (!response.ok) continue;
+        var html = await response.text();
+        files = extractImageFileNamesFromHtml(html);
+        if (files.length > 0) break;
+      } catch (error) {
+        files = [];
+      }
+    }
+
+    return dedupeImageFiles(files).filter(function (file) {
+      return /\.(png|jpe?g|webp)$/i.test(file);
+    });
+  }
+
+  function openMediaModal(imageSrc, imageTitle) {
+    if (!mediaModal || !mediaModalBody) return;
+
+    mediaModalBody.innerHTML = '';
+
+    var image = document.createElement('img');
+    image.className = 'media-modal__image';
+    image.src = imageSrc;
+    image.alt = imageTitle || 'Certificate image';
+    image.loading = 'lazy';
+    mediaModalBody.appendChild(image);
+
+    mediaModal.classList.add('media-modal--open');
+    mediaModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMediaModal() {
+    if (!mediaModal || !mediaModalBody) return;
+    mediaModal.classList.remove('media-modal--open');
+    mediaModal.setAttribute('aria-hidden', 'true');
+    mediaModalBody.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+
+  async function setupCertificateLinks() {
+    var certGrid = document.querySelector('.certifications__grid');
+    if (!certGrid) {
+      setupRevealAnimations();
+      return;
+    }
+
+    var existingCards = Array.prototype.slice.call(
+      certGrid.querySelectorAll('.certifications__card')
+    );
+
+    var imageFiles = await getCertificateImageFiles();
+
+    var fileMap = {};
+    imageFiles.forEach(function (file) {
+      var key = normalizeCertificateName(toReadableTitle(file));
+      if (key && !fileMap[key]) {
+        fileMap[key] = file;
+      }
+    });
+
+    var usedFiles = {};
+
+    existingCards.forEach(function (card) {
+      var titleEl = card.querySelector('.certifications__card-title');
+      var button = card.querySelector('.certifications__view-btn');
+      if (!titleEl || !button) return;
+
+      var title = titleEl.textContent.trim();
+      var titleKey = normalizeCertificateName(title);
+      var matchedFile = fileMap[titleKey] || null;
+
+      if (!matchedFile) {
+        Object.keys(fileMap).some(function (fileKey) {
+          if (usedFiles[fileMap[fileKey]]) return false;
+          if (titleKey && (fileKey.indexOf(titleKey) !== -1 || titleKey.indexOf(fileKey) !== -1)) {
+            matchedFile = fileMap[fileKey];
+            return true;
+          }
+          return false;
+        });
+      }
+
+      if (matchedFile) {
+        usedFiles[matchedFile] = true;
+        setCertificateButton(button, matchedFile, title);
+      } else {
+        disableCertificateButton(button);
+      }
+    });
+
+    var existingTitleMap = {};
+    certGrid.querySelectorAll('.certifications__card-title').forEach(function (titleNode) {
+      existingTitleMap[normalizeCertificateName(titleNode.textContent)] = true;
+    });
+
+    imageFiles.forEach(function (file) {
+      if (usedFiles[file]) return;
+      var title = toReadableTitle(file);
+      var normalizedTitle = normalizeCertificateName(title);
+      if (existingTitleMap[normalizedTitle]) return;
+      certGrid.appendChild(createCertificateCard(title, file));
+      existingTitleMap[normalizedTitle] = true;
+    });
+
+    certGrid.addEventListener('click', function (event) {
+      var viewButton = event.target.closest('.certifications__view-btn');
+      if (!viewButton || viewButton.classList.contains('certifications__view-btn--disabled')) {
+        return;
+      }
+
+      var certSrc = viewButton.getAttribute('data-cert-src');
+      if (!certSrc) return;
+      event.preventDefault();
+      openMediaModal(certSrc, viewButton.getAttribute('data-cert-title') || 'Certificate');
+    });
+
+    setupRevealAnimations();
+  }
+
+  setupCertificateLinks();
+
+  if (mediaModalClose) {
+    mediaModalClose.addEventListener('click', closeMediaModal);
+  }
+
+  if (mediaModal) {
+    mediaModal.addEventListener('click', function (event) {
+      if (event.target.hasAttribute('data-close-modal')) {
+        closeMediaModal();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && mediaModal && mediaModal.classList.contains('media-modal--open')) {
+      closeMediaModal();
+    }
+  });
+
+  if (!document.querySelector('.certifications__grid')) {
+    setupRevealAnimations();
+  }
 
   /* ------------------------------------------
      SKILL BARS — Animate Fill on Scroll
