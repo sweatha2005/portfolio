@@ -1083,6 +1083,9 @@ img { max-width: 100%; display: block; }
   color: #fff;
   transition: all var(--transition);
   margin-top: auto;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
 }
 .certifications__view-btn:hover {
   background: var(--accent-light);

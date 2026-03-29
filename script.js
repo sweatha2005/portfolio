@@ -434,6 +434,17 @@
       if (!titleEl || !button) return;
 
       var title = titleEl.textContent.trim();
+      var existingHref = (button.getAttribute('href') || '').trim();
+
+      if (existingHref && existingHref !== './certificate/' && existingHref !== './certificate') {
+        button.setAttribute('data-cert-src', existingHref);
+        button.setAttribute('data-cert-title', title || 'Certificate');
+        button.classList.remove('certifications__view-btn--disabled');
+        button.removeAttribute('aria-disabled');
+        button.removeAttribute('tabindex');
+        return;
+      }
+
       var titleKey = normalizeCertificateName(title);
       var matchedFile = fileMap[titleKey] || null;
 
@@ -468,18 +479,6 @@
       if (existingTitleMap[normalizedTitle]) return;
       certGrid.appendChild(createCertificateCard(title, file));
       existingTitleMap[normalizedTitle] = true;
-    });
-
-    certGrid.addEventListener('click', function (event) {
-      var viewButton = event.target.closest('.certifications__view-btn');
-      if (!viewButton || viewButton.classList.contains('certifications__view-btn--disabled')) {
-        return;
-      }
-
-      var certSrc = viewButton.getAttribute('data-cert-src');
-      if (!certSrc) return;
-      event.preventDefault();
-      openMediaModal(certSrc, viewButton.getAttribute('data-cert-title') || 'Certificate');
     });
 
     setupRevealAnimations();
