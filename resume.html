@@ -85,7 +85,7 @@
       position: relative;
     }
 
-    .resume-viewer embed {
+    .resume-viewer iframe {
       width: 100%;
       height: 100%;
       border: none;
@@ -160,13 +160,18 @@
   <main class="resume-page">
     <header class="resume-toolbar">
       <h1 class="resume-title">Sweatha CV</h1>
-      <a class="resume-download" href="./Sweatha%20CV.pdf" download>
+      <a class="resume-download" href="./Sweatha_S_CV.pdf" download>
         ⬇ Download Resume
       </a>
     </header>
 
     <section class="resume-viewer">
-      <embed src="./Sweatha%20CV.pdf#toolbar=1&navpanes=0&scrollbar=1" type="application/pdf" />
+      <iframe src="./Sweatha_S_CV.pdf#toolbar=1&navpanes=0&scrollbar=1" title="Sweatha CV">
+        <div class="resume-fallback">
+          PDF preview is not supported in this browser.
+          <a href="./Sweatha_S_CV.pdf" target="_blank" rel="noopener noreferrer">Open Resume</a>
+        </div>
+      </iframe>
     </section>
   </main>
 </body>
